@@ -1,0 +1,73 @@
+{
+  "project": "Business Manager",
+  "settings": {
+    "language_html": "fr",
+    "database": "sqlite3"
+  },
+  "apps": {
+    "Personnes": {
+      "webpage": {
+        "templates": false,
+        "static": false
+      },
+      "models": {
+        "Client": {
+          "admin": {
+            "register": true,
+            "list_display": ["nom", "prenom", "email"],
+            "search_fields": ["nom", "email"]
+          },
+          "form": true,
+          "nom": "CharField",
+          "prenom": "CharField",
+          "EmailField": "EmailField",
+          "phone": "IntegerField",
+          "mot_de_passe": "CharField",
+          "date_de_naissance": "DateField",
+          "historique": "TextField"
+        },
+        "Auteur": {
+          "admin": {
+            "register": true,
+            "list_display": ["nom", "prenom"]
+          },
+          "form": false,
+          "nom": "CharField",
+          "prenom": "CharField",
+          "EmailField": "EmailField",
+          "phone": "IntegerField",
+          "date_de_naissance": "DateField"
+        }
+      }
+    },
+    "Produits": {
+      "webpage": {
+        "templates": true,
+        "static": true,
+        "files": ["index.html", "style.css", "script.js"]
+      },
+      "models": {
+        "Livre": {
+          "admin": {
+            "register": true,
+            "list_display": ["titre", "auteur"],
+            "list_filter": ["titre", "auteur", "prix", "evaluation"],
+            "search_fields": ["nom", "email"]
+          },
+          "form": false,
+          "titre": "CharField",
+          "evaluation": "CharField",
+          "quantitée": "IntegerField",
+          "prix": "FloatField",
+          "auteur": {
+            "relation": "ForeignKey",
+            "to": "Auteur",
+            "on_delete": "CASCADE"
+          }
+        }
+      }
+    }
+  },
+  "dependencies": [],
+  "bootstrap": true
+}

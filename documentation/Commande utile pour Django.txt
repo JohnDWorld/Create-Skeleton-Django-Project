@@ -1,0 +1,82 @@
+Suite de commande réaliser afin d'automatiser la création d'une application avec django.
+
+Création d'un environnement virtuel et l'activater avec la commande suivante :
+    - 'python -m venv .venv'
+    - 'source .venv/bin/activate'
+
+Installation de django avec la commande suivante :
+    - 'pip install django'
+
+Creation d'un projet avec la commande suivante :
+    - 'django-admin startproject name_project'
+
+Création d'un super utilisateur avec la commande suivante :
+    - 'python manage.py createsuperuser'
+
+Lancement du server avec la commande suivante :
+    - 'python manage.py runserver'
+
+Création d'un dossier templates à la racine du projet pour y mettre les fichiers HTML de bases:
+    - 'base.html': contiendra l'entete et le pied de page de base (Utilisation des block pour titre, content ou même path du fichier css)
+    - '404.html': contiendra la page 404 (Utilisation Http404 de la bibliotheque django.http)
+
+Ajout du dossier templates dans le fichier settings.py de l'application principal :
+    - 'DIRS': [BASE_DIR / "templates"] (dans TEMPLATES)
+
+Création d'un dossier static à la racine du projet pour y mettre les fichiers css de bases:
+    - 'style.css': contiendra le css de base pour le projet
+
+Ajout du dossier static du projet dans le fichier settings.py de l'application principal :
+    - STATICFILES_DIRS = [BASE_DIR / "static"] (après "STATIC_URL")
+
+Ajout d'une application avec la commande suivante :
+    - 'python manage.py startapp name_app' # User, Service, Messagerie...
+
+Une fois l'application créer, il faut l'ajouter au settings.py :
+    - Allez dans settings.py de l'application principal.
+    - Ajouter l'application a 'INSTALLED_APPS'.
+      - Exemple: 'client' ('name = %name%' dans le fichier app.py),
+
+Pour ajouter notre application en gestion de l'administrateur, il faut ajouter l'application dans le fichier admin.py de l'application :
+    - Ajouter 'from .models import NameOfModel' dans le fichier admin.py de l'application
+    - Ajouter 'admin.site.register(NameOfModel)' sous le commentaire
+
+Faire une migration avec la commande suivante :
+    - 'python manage.py makemigrations'
+    - 'python manage.py migrate'
+
+Collecter les fichiers statics du projet :
+    - Après avoir créé dans le fichier 'settings.py' l'option 'STATIC_ROOT = BASE_DIR / "nom du dossier pour la collecte des fichiers"'
+    - 'python manage.py collectstatic'
+
+Création du fichier "requirements.txt" :
+    - 'pip freeze > requirements.txt'
+
+Pour mettre la page admin en français :
+    - Ajouter 'django.middleware.locale.LocaleMiddleware' dans MIDDLEWARE_CLASSES après 'django.contrib.sessions.middleware.SessionMiddleware'
+
+Améliorer la page admin :
+    - Utiliser la fonction __str__ dans les modèles
+      - Exemple: 'def __str__(self): return self.name'
+    - Création class admin pour le modèle dans le fichier admin.py
+      - Exemple: 'class ClientAdmin(admin.ModelAdmin): list_display = ('firstname', , 'lastname', 'email', 'phone', 'status', 'date_of_birth', 'historic')' puis le rajouter en dessous admin.site.register(Client, ClientAdmin)
+    - Ajout d'une case recherche pour le modèle:
+      - Exemple: 'search_fields = ['firstname', , 'lastname']' sous list_display = ()
+
+Pour faire une page internet:
+    - Commencer par faire un fonction index dans le fichier view.py.
+      - Exemple: def index(request): return render(request, 'nom_app/index.html')
+    - Création du fichier urls.py pour l'application.
+    - Ajouter un urlpatterns dans le fichier urls.py inspirer du fichier urls.py de l'application principal (penser aux imports).
+      - Exemple: 'urlpatterns = [path('', views.index, name='index')]',
+    - Ajouter le path au fichier urls.py de l'application principal.
+      - Exemple: 'path('client/', include('client.urls'))', # Ajouter include dans l'import
+    - Création du dossier templates et du sous dossier de l'application. (Ex: templates/client)
+    - Création du fichier index.html dans le sous dossier de l'application. (Ex: templates/client/index.html)
+    - Création du dossier static et du sous dossier de l'application. (Ex: static/client)
+    - Création du fichier style.css dans le sous dossier de l'application. (Ex: static/client/style.css)
+
+Avant le déploiement :
+    - Importer la bibliotheque getenv from os dans le fichier settings.py
+    - Utiliser getenv() dans ALLOWED_HOSTS, SECRET_KEY et DEBUG
+      - Exemple: 'ALLOWED_HOSTS = [getenv("APP_HOSTS")]', 'SECRET_KEY = getenv("SECRET_KEY")', 'DEBUG = getenv("IS_DEVELOPEMENT", True)'

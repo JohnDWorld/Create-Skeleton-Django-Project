@@ -1,0 +1,102 @@
+{
+  "project": "Ostheopathe",
+  "settings": {
+    "language_html": "fr",
+    "database": "sqlite3"
+  },
+  "apps": {
+    "website": {
+      "webpage": {
+        "templates": true,
+        "static": true
+      },
+      "models": {
+        "Prospect": {
+          "admin": {
+            "register": true,
+            "list_display": ["lastname", "firstname", "email", "created_at"]
+          },
+          "form": true,
+          "lastname": "CharField",
+          "firstname": "CharField",
+          "email": "EmailField",
+          "phone": "IntegerField",
+          "resume": "TextField",
+          "created_at": "DateTimeField"
+        }
+      }
+    },
+    "my_app": {
+      "webpage": {
+        "templates": true,
+        "static": true
+      },
+      "models": {
+        "Client": {
+          "admin": {
+            "register": true,
+            "list_display": ["lastname", "firstname", "phone", "email"],
+            "search_fields": ["lastname"]
+          },
+          "form": false,
+          "lastname": "CharField",
+          "firstname": "CharField",
+          "email": "EmailField",
+          "phone": "IntegerField"
+        },
+        "Bill": {
+          "admin": {
+            "register": true,
+            "list_display": ["amount", "client", "paid"],
+            "search_fields": ["client"]
+          },
+          "form": true,
+          "amount": "FloatField",
+          "file": "FileField",
+          "paid": "BooleanField",
+          "created_at": "DateTimeField",
+          "client": {
+            "relation": "ForeignKey",
+            "to": "Client",
+            "on_delete": "SET_NULL"
+          }
+        },
+        "Informations": {
+          "admin": {
+            "register": true
+          },
+          "form": false,
+          "amount_prestation": "FloatField",
+          "profil_picture": "FileField",
+          "doctolib_link": "CharField"
+        },
+        "Calendar": {
+          "admin": {
+            "register": true
+          },
+          "form": false,
+          "title": "FloatField",
+          "slug": "SlugField"
+        },
+        "Event": {
+          "admin": {
+            "register": true
+          },
+          "form": true,
+          "name": "FloatField",
+          "start": "DateTimeField",
+          "end": "DateTimeField",
+          "is_cancelled": "BooleanField",
+          "client": {
+            "relation": "ForeignKey",
+            "to": "Client",
+            "on_delete": "ON_CASCADE"
+          }
+        }
+      }
+    }
+  },
+  "dependencies": [],
+  "uploads": false,
+  "bootstrap": false
+}

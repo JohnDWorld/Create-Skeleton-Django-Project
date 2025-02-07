@@ -1,0 +1,18 @@
+# Environnement virtuel
+venv/
+.env
+
+# Fichiers Django inutiles
+__pycache__/
+*.pyc
+*.pyo
+
+# Base de données SQLite
+db.sqlite3
+
+# Dossier pour VSCode
+.vscode
+
+# Dossier projet personnel
+projects/*
+!projects/.gitkeep
