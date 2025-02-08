@@ -81,7 +81,10 @@ Le fichier `project_config.json` permet de définir :
         "static": true
       }
     }
-  }
+  },
+  "dependencies": [],
+  "uploads": false,
+  "bootstrap": true
 }
 ```
 
@@ -100,6 +103,7 @@ Le fichier `project_config.json` permet de définir :
 ## 🔮 Améliorations futures
 
 - 🚀 Installation automatique de React JS.
+- 🚀 Utilisation d'un autre type de BDD.
 
 ---
 
@@ -122,7 +126,7 @@ Les contributions sont les bienvenues ! Pour proposer une amélioration :
 ## 📞 Contact
 
 👤 **JohnDWorld**  
-📧 Email : johndoe@example.com  
+📧 Email : j.demory40@gmail.com
 🐙 GitHub : [JohnDWorld](https://github.com/JohnDWorld)
 
 Merci d'utiliser ce générateur de projets Django ! 🎉
