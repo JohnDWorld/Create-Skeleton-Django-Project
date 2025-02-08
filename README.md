@@ -61,7 +61,7 @@ Exemple de structure :
 ✔️ Création automatique des modèles avec administration Django  
 ✔️ Génération des templates et fichiers statiques  
 ✔️ Structure prête à l’emploi pour un projet Django  
-✔️ Ajout de la gestion des dépendances
+✔️ Ajout de la gestion des dépendances  
 ✔️ Intégration de Bootstrap automatique
 
 ## Améliorations futures  
