@@ -2,14 +2,6 @@
 venv/
 .env
 
-# Fichiers Django inutiles
-__pycache__/
-*.pyc
-*.pyo
-
-# Base de données SQLite
-db.sqlite3
-
 # Dossier pour VSCode
 .vscode
 
@@ -17,5 +9,16 @@ db.sqlite3
 projects/*
 !projects/.gitkeep
 
+# Fichiers Django inutiles
+__pycache__/
+*.pyc
+*.pyo
+
 # Fichier Mac inutiles
 .DS_Store
+
+# Fichier personel à ne pas pusher
+src/project_config.json
+
+# Base de données SQLite
+db.sqlite3

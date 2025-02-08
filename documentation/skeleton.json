@@ -5,69 +5,89 @@
     "database": "sqlite3"
   },
   "apps": {
-    "Personnes": {
+    "website": {
       "webpage": {
-        "templates": false,
-        "static": false
+        "templates": true,
+        "static": true
       },
       "models": {
-        "Client": {
+        "Prospect": {
           "admin": {
             "register": true,
-            "list_display": ["nom", "prenom", "email"],
-            "search_fields": ["nom", "email"]
+            "list_display": ["lastname", "firstname", "email", "created_at"]
           },
           "form": true,
-          "nom": "CharField",
-          "prenom": "CharField",
-          "EmailField": "EmailField",
+          "lastname": "CharField",
+          "firstname": "CharField",
+          "email": "EmailField",
           "phone": "IntegerField",
-          "mot_de_passe": "CharField",
-          "date_de_naissance": "DateField",
-          "historique": "TextField"
-        },
-        "Auteur": {
-          "admin": {
-            "register": true,
-            "list_display": ["nom", "prenom"]
-          },
-          "form": false,
-          "nom": "CharField",
-          "prenom": "CharField",
-          "EmailField": "EmailField",
-          "phone": "IntegerField",
-          "date_de_naissance": "DateField"
+          "resume": "TextField",
+          "created_at": "DateTimeField"
         }
       }
     },
-    "Produits": {
+    "my_app": {
       "webpage": {
         "templates": true,
         "static": true,
         "files": ["index.html", "style.css", "script.js"]
       },
       "models": {
-        "Livre": {
+        "Client": {
           "admin": {
             "register": true,
-            "list_display": ["titre", "auteur"],
-            "list_filter": ["titre", "auteur", "prix", "evaluation"],
-            "search_fields": ["nom", "email"]
+            "list_display": ["lastname", "firstname", "phone", "email"],
+            "search_fields": ["lastname"]
           },
           "form": false,
-          "titre": "CharField",
-          "evaluation": "CharField",
-          "quantitée": "IntegerField",
-          "prix": "FloatField",
-          "auteur": {
+          "lastname": "CharField",
+          "firstname": "CharField",
+          "email": "EmailField",
+          "phone": "IntegerField"
+        },
+        "Bill": {
+          "admin": {
+            "register": true,
+            "list_display": ["amount", "client", "paid"],
+            "search_fields": ["client"]
+          },
+          "form": true,
+          "amount": "FloatField",
+          "file": "FileField",
+          "paid": "BooleanField",
+          "created_at": "DateTimeField",
+          "client": {
             "relation": "ForeignKey",
-            "to": "Auteur",
-            "on_delete": "CASCADE"
+            "to": "Client",
+            "on_delete": "SET_NULL"
+          }
+        },
+        "Calendar": {
+          "admin": {
+            "register": true
+          },
+          "form": false,
+          "title": "FloatField",
+          "slug": "SlugField"
+        },
+        "Event": {
+          "admin": {
+            "register": true
+          },
+          "form": true,
+          "name": "FloatField",
+          "start": "DateTimeField",
+          "end": "DateTimeField",
+          "is_cancelled": "BooleanField",
+          "client": {
+            "relation": "ForeignKey",
+            "to": "Client",
+            "on_delete": "ON_CASCADE"
           }
         }
       }
     }
   },
-  "dependencies": [],
+  "dependencies": ["django-dotenv"],
   "bootstrap": true
 }
