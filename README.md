@@ -11,8 +11,8 @@ Ce projet permet de générer automatiquement une structure Django complète à 
 
 1. **Cloner le projet**  
    ```sh
-   git clone <URL_DU_REPO>
-   cd <NOM_DU_PROJET>
+   git clone https://github.com/JohnDWorld/Create-Skeleton-Django-Project.git
+   cd Create-Skeleton-Django-Project
    ```
 
 2. **Créer un environnement virtuel**  
@@ -20,21 +20,11 @@ Ce projet permet de générer automatiquement une structure Django complète à 
    python -m venv src/venv
    ```
 
-3. **Activer l’environnement virtuel**  
-   - Sur Windows :  
-     ```sh
-     src/venv/Scripts/activate
-     ```
-   - Sur Mac/Linux :  
-     ```sh
-     source src/venv/bin/activate
-     ```
-
-4. **Préparer le fichier de configuration**  
+3. **Préparer le fichier de configuration**  
    - Copier le fichier `skeleton.json` depuis `documentation/` et le renommer en `project_config.json`  
    - Adapter les paramètres selon vos besoins  
 
-5. **Lancer la génération du projet**  
+4. **Lancer la génération du projet**  
    ```sh
    python src/main.py
    ```
@@ -71,9 +61,9 @@ Exemple de structure :
 ✔️ Création automatique des modèles avec administration Django  
 ✔️ Génération des templates et fichiers statiques  
 ✔️ Structure prête à l’emploi pour un projet Django  
+✔️ Ajout de la gestion des dépendances
+✔️ Intégration de Bootstrap automatique
 
 ## Améliorations futures  
-- Ajout de la gestion des dépendances  
-- Intégration de Bootstrap automatique  
-- Génération des vues et URLs  
+- Ajout de l'installation automatique de React JS 
 
