@@ -29,8 +29,7 @@
     "my_app": {
       "webpage": {
         "templates": true,
-        "static": true,
-        "files": ["index.html", "style.css", "script.js"]
+        "static": true
       },
       "models": {
         "Client": {

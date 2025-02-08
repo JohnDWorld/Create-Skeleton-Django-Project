@@ -24,7 +24,11 @@ Ce projet permet de générer automatiquement une structure Django complète à 
 - 🛠️ Mise à jour de `admin.py`.
 - 🎨 Création des templates à partir des fichiers présents dans `templates/html`.
 
-ℹ️ **Si vous modifiez `project_config.json`, vous aurez le choix de réécrire ou de conserver les fichiers Python existants.**
+Il ne vous reste plus qu'à ajuster les paramètres dans `models.py` et à peaufiner l'interface utilisateur de votre projet.
+
+ℹ️ **Si vous modifiez** `project_config.json` **et relancer** `main.py`**, vous aurez le choix de réécrire ou de conserver les fichiers Python existants.**
+
+‼️ **ATTENTION : Les templates originaux sont disponibles dans le dossier** `templates`**. Cependant, si vous retirez les balises {bootstrapscript} et {bootstrapcss} dans template/base.html, l'intégration automatique de Bootstrap ne sera plus effectuée.** ‼️
 
 ---
 
