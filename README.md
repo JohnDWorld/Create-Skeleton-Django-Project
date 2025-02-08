@@ -43,7 +43,7 @@ Ce projet permet de générer automatiquement une structure Django complète à 
 
 2. **Préparer le fichier de configuration**
 
-   - Copier `skeleton.json` depuis `documentation/` et le renommer en `project_config.json`.
+   - Copier `skeleton.json` depuis `documentation/`, le coller dans `src/` et le renommer en `project_config.json`.
    - Adapter les paramètres selon vos besoins.
    - Les dépendances seront installées automatiquement en fonction de la liste renseignée dans `project_config.json`.
 
