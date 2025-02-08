@@ -1,44 +1,72 @@
 # Générateur de projets Django
 
-## Description  
+![Python](https://img.shields.io/badge/Python-3.x-blue) ![Django](https://img.shields.io/badge/Django-Automation-green) ![License](https://img.shields.io/badge/License-MIT-yellow)
+
+## 📌 Description
+
 Ce projet permet de générer automatiquement une structure Django complète à partir d'un fichier JSON de configuration. L'objectif est d'accélérer la mise en place de projets en automatisant la création des applications, modèles, templates et autres éléments essentiels.
 
-## Prérequis  
-- Python installé sur votre machine (version 3.x recommandée)  
-- `virtualenv` (optionnel mais recommandé)  
+### ✅ Actions réalisées par `main.py` :
 
-## Installation  
+- 📂 Création de l'environnement virtuel `src/venv`.
+- 📦 Installation des dépendances renseignées dans l'environnement virtuel.
+- 🏗️ Création du projet Django dans `projects/`.
+- 🛠️ Mise à jour de `settings.py` pour gérer les fichiers statiques et intégrer les applications créées.
+- 🔗 Mise à jour du fichier `urls.py`.
+- 🎨 Création des templates à partir des fichiers présents dans `templates/html`.
+- 📁 Mise en place du dossier `uploads` (si demandé).
+- 💅 Intégration automatique de Bootstrap 5 (si demandé).
 
-1. **Cloner le projet**  
+### 🔧 Actions réalisées par application créée :
+
+- 🏗️ Mise à jour de `models.py` et création de `forms.py` (si demandé).
+- 🔗 Modification du fichier `urls.py`.
+- 🛠️ Mise à jour de `admin.py`.
+- 🎨 Création des templates à partir des fichiers présents dans `templates/html`.
+
+ℹ️ **Si vous modifiez `project_config.json`, vous aurez le choix de réécrire ou de conserver les fichiers Python existants.**
+
+---
+
+## 🚀 Prérequis
+
+- Python installé sur votre machine (version 3.x recommandée).
+
+## 🏗️ Installation
+
+1. **Cloner le projet**
+
    ```sh
    git clone https://github.com/JohnDWorld/Create-Skeleton-Django-Project.git
    cd Create-Skeleton-Django-Project
    ```
 
-2. **Créer un environnement virtuel**  
-   ```sh
-   python -m venv src/venv
-   ```
+2. **Préparer le fichier de configuration**
 
-3. **Préparer le fichier de configuration**  
-   - Copier le fichier `skeleton.json` depuis `documentation/` et le renommer en `project_config.json`  
-   - Adapter les paramètres selon vos besoins  
+   - Copier `skeleton.json` depuis `documentation/` et le renommer en `project_config.json`.
+   - Adapter les paramètres selon vos besoins.
+   - Les dépendances seront installées automatiquement en fonction de la liste renseignée dans `project_config.json`.
 
-4. **Lancer la génération du projet**  
+3. **Lancer la génération du projet**
    ```sh
    python src/main.py
    ```
 
 Le projet sera créé dans le dossier `projects/`.
 
-## Configuration  
-Le fichier `project_config.json` permet de définir :  
-- Le nom du projet  
-- Les paramètres de la base de données  
-- Les applications et modèles à générer  
-- Les templates et fichiers statiques associés  
+---
 
-Exemple de structure :
+## ⚙️ Configuration
+
+Le fichier `project_config.json` permet de définir :
+
+- 📌 Le nom du projet.
+- 🛢️ Les paramètres de la base de données.
+- 📂 Les applications et modèles à générer.
+- 🎨 Les templates et fichiers statiques associés.
+
+### 📜 Exemple de structure :
+
 ```json
 {
   "project": "MonProjet",
@@ -57,13 +85,44 @@ Exemple de structure :
 }
 ```
 
-## Fonctionnalités  
-✔️ Création automatique des modèles avec administration Django  
-✔️ Génération des templates et fichiers statiques  
-✔️ Structure prête à l’emploi pour un projet Django  
-✔️ Ajout de la gestion des dépendances  
-✔️ Intégration de Bootstrap automatique
+---
 
-## Améliorations futures  
-- Ajout de l'installation automatique de React JS 
+## 🎯 Fonctionnalités
 
+✔️ Création automatique des modèles avec administration Django.  
+✔️ Génération des templates et fichiers statiques.  
+✔️ Structure prête à l’emploi pour un projet Django.  
+✔️ Ajout de la gestion des dépendances.  
+✔️ Intégration automatique de Bootstrap 5.
+
+---
+
+## 🔮 Améliorations futures
+
+- 🚀 Installation automatique de React JS.
+
+---
+
+## 📜 Licence
+
+Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+## 🤝 Contribuer
+
+Les contributions sont les bienvenues ! Pour proposer une amélioration :
+
+1. Forkez le projet 🍴.
+2. Créez une branche (`git checkout -b feature-amazing-feature`).
+3. Commitez vos modifications (`git commit -m 'Ajout d’une fonctionnalité géniale'`).
+4. Poussez vers la branche (`git push origin feature-amazing-feature`).
+5. Ouvrez une Pull Request 🚀.
+
+---
+
+## 📞 Contact
+
+👤 **JohnDWorld**  
+📧 Email : johndoe@example.com  
+🐙 GitHub : [JohnDWorld](https://github.com/JohnDWorld)
+
+Merci d'utiliser ce générateur de projets Django ! 🎉

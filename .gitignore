@@ -16,3 +16,6 @@ db.sqlite3
 # Dossier projet personnel
 projects/*
 !projects/.gitkeep
+
+# Fichier Mac inutiles
+.DS_Store
