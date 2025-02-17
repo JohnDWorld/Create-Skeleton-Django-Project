@@ -5,6 +5,13 @@ import time
 import ast
 
 
+def _update_pip_version(constants):
+    subprocess.run(
+        [constants.PATH_PYTHON, "-m", "pip", "install", "--upgrade", "pip"],
+        check=True,
+    )
+
+
 def check_files_dependencies(json_file, templates_dir):
     """Check if the necessary files and directories exist."""
     if not os.path.exists(json_file):
@@ -24,16 +31,35 @@ def create_venv(config, constants):
     os.chdir(constants.SRC_DIR)
     os.system("python -m venv venv")
     dependencies = ["django", "pillow", "python-slugify"] + config.get("dependencies")
-    subprocess.run(
-        [constants.PATH_PYTHON, "-m", "pip", "install", "--upgrade", "pip"],
-        check=True,
-    )
+    _update_pip_version(constants)
     for dependency in dependencies:
         subprocess.run(
             [constants.PATH_PYTHON, "-m", "pip", "install", dependency],
             check=True,
         )
     print(f"\nVirtual environment created and dependencies installed successfully!\n")
+    time.sleep(constants.SLEEP_TIME)
+
+
+def check_dependencies(config, constants):
+    """Check if the dependencies are installed and update pip."""
+    dependencies = config.get("dependencies")
+    _update_pip_version(constants)
+    pip_list = subprocess.run(
+        [constants.PATH_PYTHON, "-m", "pip", "list"],
+        stdout=subprocess.PIPE,
+        text=True,
+        check=True,
+    )
+    for dependency in dependencies:
+        if dependency not in pip_list.stdout:
+            subprocess.run(
+                [constants.PATH_PYTHON, "-m", "pip", "install", dependency],
+                check=True,
+            )
+    print(
+        f"\nVirtual environment updated with new dependencies and updates pip successfully!\n"
+    )
     time.sleep(constants.SLEEP_TIME)
 
 
@@ -118,3 +144,7 @@ def update_settings(constants, config, name_list):
         # Rewrite the file settings.py
         with open(constants.MAIN_APP_FILE_SETTINGS, "w") as f:
             f.write(updated_content)
+
+
+def install_reactjs(constants):
+    pass

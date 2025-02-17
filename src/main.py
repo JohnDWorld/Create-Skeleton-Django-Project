@@ -40,6 +40,7 @@ from utils import (
     check_files_dependencies,
     load_config,
     create_venv,
+    check_dependencies,
     slugify,
     update_settings,
     ask_user_rewrite,
@@ -67,6 +68,8 @@ def main():
     # Creation of the virtual environment
     if not os.path.exists(constants.PATH_PYTHON):
         create_venv(config, constants)
+    else:
+        check_dependencies(config, constants)
 
     # Slugify the project name
     config["slug"] = slugify(constants.PATH_PYTHON, config["project"])
